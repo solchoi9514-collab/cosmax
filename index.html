@@ -1213,22 +1213,5 @@
 
   render();
 </script>
-<script>
-  (function () {
-    function reportHeight() {
-      window.parent.postMessage(
-        { type: "streamlit:setFrameHeight", height: document.body.scrollHeight },
-        "*"
-      );
-    }
-    if (window.ResizeObserver) {
-      new ResizeObserver(reportHeight).observe(document.body);
-    } else {
-      window.addEventListener("load", reportHeight);
-      window.addEventListener("resize", reportHeight);
-    }
-    reportHeight();
-  })();
-</script>
 </body>
 </html>

@@ -21,4 +21,4 @@ iframe { border: none; }
 with open("index.html", "r", encoding="utf-8") as f:
     html_content = f.read()
 
-components.html(html_content, height=700, scrolling=False)
+components.html(html_content, height=1200, scrolling=True)
