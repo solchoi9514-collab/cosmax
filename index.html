@@ -107,8 +107,6 @@
 
   /* ---------- Gate screen ---------- */
   .gate {
-    min-height: 100vh;
-    min-height: 100dvh;
     display: flex;
     flex-direction: column;
   }
@@ -1214,6 +1212,23 @@
   })();
 
   render();
+</script>
+<script>
+  (function () {
+    function reportHeight() {
+      window.parent.postMessage(
+        { type: "streamlit:setFrameHeight", height: document.body.scrollHeight },
+        "*"
+      );
+    }
+    if (window.ResizeObserver) {
+      new ResizeObserver(reportHeight).observe(document.body);
+    } else {
+      window.addEventListener("load", reportHeight);
+      window.addEventListener("resize", reportHeight);
+    }
+    reportHeight();
+  })();
 </script>
 </body>
 </html>
